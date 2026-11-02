@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Environment Variables (Contains sensitive MongoDB credentials)
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# macOS system files
+.DS_Store
