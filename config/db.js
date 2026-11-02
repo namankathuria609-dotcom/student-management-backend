@@ -17,7 +17,9 @@ const connectDB = async () => {
     }
 
     // Connect to MongoDB using the URI from environment variables
-    const conn = await mongoose.connect(process.env.MONGO_URI);
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
+      serverSelectionTimeoutMS: 20000, // 20 second timeout for Atlas topology discovery
+    });
 
     // If connection succeeds, print host name
     console.log(` MongoDB Atlas Connected: ${conn.connection.host}`);
