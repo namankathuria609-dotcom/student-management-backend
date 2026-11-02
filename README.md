@@ -12,7 +12,7 @@ A modern, lightweight, beginner-friendly RESTful backend API built with **Node.j
 
 ---
 
-[Features](#-key-features) • [Architecture](#-system-architecture) • [Quick Start](#-quick-start) • [API Reference](#-api-endpoints) • [Postman Guide](#-postman-testing) • [Viva Q&A](#-professor-evaluation--viva-guide)
+[Features](#-key-features) • [Architecture](#-system-architecture) • [Quick Start](#-quick-start) • [API Reference](#-api-endpoints) • [Postman Guide](#-postman-testing)
 
 </div>
 
@@ -25,7 +25,7 @@ A modern, lightweight, beginner-friendly RESTful backend API built with **Node.j
 - 🧩 **MVC Pattern**: Strict separation of concerns (Models, Routes, Controllers, Config).
 - 🛡️ **Secure Configuration**: Environment variables isolated via `dotenv` and guarded by `.gitignore`.
 - 🧪 **Pre-configured Postman Suite**: 1-click test collection included (`postman_collection.json`).
-- 📝 **Evaluation-Ready Code**: Extensively commented for academic evaluation and line-by-line review.
+- 📝 **Clean & Well-Documented**: Intuitive code structure with clear inline documentation.
 
 ---
 
@@ -152,66 +152,6 @@ A complete Postman collection is included in this repository: [`postman_collecti
 
 ---
 
-## 🧑‍🏫 Professor Evaluation & Viva Guide
-
-### Core Code Breakdown
-
-- **`server.js`**: Initializes Express, configures middleware (`cors`, `express.json()`), mounts API routes under `/api/students`, and listens on `PORT`.
-- **`config/db.js`**: Connects asynchronously to MongoDB Atlas using `mongoose.connect()`. Uses `try/catch` for clean error reporting without crashing the server.
-- **`models/Student.js`**: Defines the data blueprint with validation:
-  - `name`: String, required, trimmed.
-  - `email`: String, required, unique index, lowercase format.
-  - `course`: String, required, trimmed.
-  - `timestamps: true`: Auto-creates `createdAt` and `updatedAt`.
-- **`controllers/studentController.js`**: Contains business logic:
-  - `Student.create()` $\rightarrow$ Creates new record.
-  - `Student.find().sort()` $\rightarrow$ Reads all records.
-  - `Student.findById()` $\rightarrow$ Reads single record.
-  - `Student.findByIdAndUpdate()` $\rightarrow$ Updates with `{ new: true, runValidators: true }`.
-  - `Student.findByIdAndDelete()` $\rightarrow$ Removes record.
-- **`routes/studentRoutes.js`**: Maps clean HTTP verbs (`POST`, `GET`, `PUT`, `DELETE`) to corresponding controller functions using `express.Router()`.
-
----
-
-### Top Viva Questions & Quick Answers
-
-<details>
-<summary><b>1. Why use Express.js instead of Node's built-in <code>http</code> module?</b></summary>
-<br>
-Express simplifies route handling, middleware integration, JSON body parsing, and response formatting. The raw <code>http</code> module requires manual URL parsing and manual request chunk assembly.
-</details>
-
-<details>
-<summary><b>2. What is Middleware and why is <code>express.json()</code> essential?</b></summary>
-<br>
-Middleware functions intercept incoming HTTP requests before reaching route handlers. <code>express.json()</code> parses raw incoming JSON payloads into accessible JavaScript objects under <code>req.body</code>.
-</details>
-
-<details>
-<summary><b>3. What is the difference between Schema and Model in Mongoose?</b></summary>
-<br>
-A <b>Schema</b> is the blueprint defining document structure, types, and validation rules. A <b>Model</b> is the compiled constructor that provides methods to query, create, update, and delete documents in the MongoDB collection.
-</details>
-
-<details>
-<summary><b>4. Why are <code>.env</code> and <code>.gitignore</code> critical in production?</b></summary>
-<br>
-<code>.env</code> stores sensitive credentials (database connection strings, secret keys). <code>.gitignore</code> prevents these secrets and heavy dependencies (<code>node_modules/</code>) from leaking to public repositories.
-</details>
-
-<details>
-<summary><b>5. What do status codes 200, 201, 400, and 404 represent?</b></summary>
-<br>
-<ul>
-  <li><b>200 OK</b>: Request succeeded.</li>
-  <li><b>201 Created</b>: New resource successfully created on server.</li>
-  <li><b>400 Bad Request</b>: Missing or invalid request data.</li>
-  <li><b>404 Not Found</b>: Requested route or resource does not exist.</li>
-</ul>
-</details>
-
----
-
 <div align="center">
-Built with ❤️ for College Academic Evaluation
+Student Management Backend System • Built with Node.js, Express & MongoDB Atlas
 </div>
